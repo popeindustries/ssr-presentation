@@ -1,0 +1,39 @@
+{
+  "name": "meetup-oslo-2016",
+  "description": "Presentation for Node/React meetup Oslo 2016",
+  "version": "1.0.0",
+  "author": "Alexander Pope <alex@pope-industries.com>",
+  "dependencies": {},
+  "devDependencies": {
+    "benchmark": "2.1.2",
+    "buddy": "6.5.2",
+    "buddy-plugin-stylus": "0.54.5-6",
+    "buddy-server": "2.0.2",
+    "react": "15.4.1",
+    "react-dom": "15.4.1"
+  },
+  "repository": "https://github.com/popeindustries/meetup-oslo-2016.git",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=production buddy --serve watch",
+    "dev": "buddy --reload --serve watch"
+  },
+  "buddy": {
+    "build": [
+      {
+        "input": "src/index.{js,html}",
+        "output": "."
+      },
+      {
+        "input": "src/index.styl",
+        "output": "."
+      }
+    ],
+    "server": {
+      "directory": ".",
+      "port": 3000,
+      "env": {}
+    }
+  }
+}

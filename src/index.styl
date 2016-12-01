@@ -1,0 +1,387 @@
+@import './lib/normalize.css';
+@import './lib/fonts.css';
+
+BLACK = #050A07;
+YR_BLUE = #00b9f1;
+DARK_BLUE = darken(YR_BLUE, 60%);
+GREEN = #41d041;
+RED = #d21111;
+YELLOW = #E8D733;
+PINK = #DB1A7E;
+RATIO = 16/9;
+RATIO_INVERT = 9/16;
+TRANSITION_DURATION = 400ms;
+TRANSITION_DURATION_SHORT = 200ms;
+TRANSITION_DURATION_LONG = 800ms;
+TRANSITION_TIMING_CUBIC_OUT = cubic-bezier(0.215, 0.61, 0.355, 1);
+
+full() {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+bg(path) {
+  background-image: url(path);
+  background-position: bottom center;
+  background-size: cover;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 200vh;
+}
+html {
+  background-color: BLACK;
+}
+body {
+  color: white;
+  font-family: "Avenir Next", sans-serif;
+  font-size: 16px;
+  font-variant: normal;
+  font-weight: 500;
+  padding-bottom: 2em;
+  overflow: hidden;
+  z-index: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 4vw;
+  font-weight: 600;
+}
+h2 {
+  font-size: 3vw;
+  font-weight: 600;
+}
+h3 {
+  font-size: 2.2vw;
+  font-weight: 500;
+}
+ul {
+  margin: 0;
+  padding: 0 0 0 0.5vw;
+}
+li {
+  font-size: 1.8vw;
+  list-style-type: none;
+  padding: 0.5vw 0;
+  &::before {
+    display: inline-block;
+    font-size: 2vw;
+    width: 2vw;
+  }
+  &.good::before {
+    content: '+';
+    color: GREEN;
+  }
+  &.maybe::before {
+    content: '±';
+    color: YELLOW;
+  }
+  &.bad::before {
+    content: '—';
+    color: RED;
+  }
+}
+p {
+  font-size: 1.8vw;
+}
+a {
+  color: white;
+  font-size: 1.8vw;
+  text-decoration: none;
+}
+section {
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: all TRANSITION_DURATION TRANSITION_TIMING_CUBIC_OUT;
+  visibility: hidden;
+  width: 100%;
+  .presentation-notes & > .notes {
+    display: block;
+  }
+  .presentation-notes & > *:not(.notes) {
+    display: none;
+  }
+  &.show {
+    visibility: visible;
+  }
+  &.hide {
+    visibility: hidden;
+  }
+}
+pre {
+  margin: 0 0 0 -8vw;
+  width: auto;
+  code {
+    font-family: 'Hack', monospace;
+    font-size: 2.2vw;
+    padding: 0 !important;
+    // overflow: hidden !important;
+    background-color: transparent !important;
+    width: auto;
+  }
+}
+blockquote {
+  font-size: 2vw;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 2vw 0 3vw;
+  position: relative;
+  &:before {
+    content: '‟';
+    display: inline-block;
+    font-size: 300%;
+    left: 0;
+    position: absolute;
+    top: -1.5vw;
+  }
+}
+.slides {
+  background-color: BLACK;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  transform-origin: top left;
+  top: 0;
+  width: 100%;
+}
+.clock {
+  font-size: 4vw;
+  opacity: 0.25;
+  position: absolute;
+  right: 1vw;
+  top: 0.5vw;
+  z-index: 100;
+}
+.notes {
+  background-color: white;
+  color: white;
+  display: none;
+  font-size: 4vw;
+  font-weight: 400;
+  text-align: left;
+  z-index: 1000;
+  full();
+  .dev & {
+    background-color: rgba(white, 0.2);
+    display: block;
+    top: initial;
+  }
+  .note {
+    font-size: inherit;
+    left: 50%;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    visibility: visible;
+    width: 80%;
+    .dev & {
+      background-color: rgba(255,255,255,0.8);
+      bottom: 0;
+      font-size: 1.8vw;
+      left: 0;
+      top: initial;
+      transform: none;
+      padding: 1em;
+      width: auto;
+    }
+  }
+}
+.function {
+  color: #a6e22e;
+}
+
+#title {
+  color: PINK;
+  text-align: center;
+  transition-duration: 500ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h1 {
+    line-height: 1;
+    margin-top: -4vh;
+  }
+  h2 {
+    color: white;
+    span {
+      color: PINK;
+    }
+  }
+}
+
+#crap {
+  color: #524944;
+  opacity: 0;
+  transition-duration: TRANSITION_DURATION_LONG;
+  .bg {
+    bg('src/images/bg-9.jpg');
+    full();
+    -webkit-filter: brightness(4);
+    filter: brightness(4);
+    transition: all TRANSITION_DURATION_LONG TRANSITION_TIMING_CUBIC_OUT;
+    z-index: -1;
+  }
+  .points {
+    full();
+    bottom: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity TRANSITION_DURATION linear;
+    .point {
+      font-size: 4vw;
+      margin: 0 0 0 40%;
+      opacity: 0;
+      transition: all TRANSITION_DURATION_SHORT linear;
+    }
+  }
+  &.show {
+    opacity: 1;
+    .bg {
+      -webkit-filter: brightness(1);
+      filter: brightness(1);
+    }
+  }
+  &.step-1 {
+    .point-1 {
+      opacity: 1;
+    }
+  }
+  &.step-2 {
+    .point-2 {
+      opacity: 1;
+    }
+  }
+  &.step-3 {
+    .point-3 {
+      opacity: 1;
+    }
+  }
+  &.step-4 {
+    .point-4 {
+      opacity: 1;
+    }
+  }
+  &.step-5 {
+    .point {
+      color: lighten(#524944, 20%);
+      &::first-letter {
+        color: PINK;
+        font-weight: 900;
+        padding-right: 0.8vw;
+      }
+    }
+    .point-2 {
+      transition-delay: 25ms;
+    }
+    .point-3 {
+      transition-delay: 100ms;
+    }
+    .point-4 {
+      transition-delay: 150ms;
+    }
+  }
+  &.step-6 {
+    .point {
+      opacity: 0;
+    }
+  }
+  &.hide {
+    opacity: 0;
+    .bg {
+      -webkit-filter: brightness(0);
+      filter: brightness(0);
+    }
+    .points {
+      opacity: 0;
+    }
+  }
+}
+
+#bye {
+  color: white;
+  opacity: 0;
+  transition-duration: TRANSITION_DURATION_LONG;
+  .bg {
+    bg('src/images/bg-16.jpg');
+    full();
+    -webkit-filter: brightness(4);
+    filter: brightness(4);
+    transition: all TRANSITION_DURATION_LONG TRANSITION_TIMING_CUBIC_OUT;
+    z-index: -1;
+  }
+  h1 {
+    color: #EA735B;
+    bottom: 4vw;
+    opacity: 0;
+    position: absolute;
+    right: 40vw;
+    text-align: center;
+    transition: opacity TRANSITION_DURATION_SHORT linear;
+  }
+  a {
+    color: inherit;
+    display: block;
+    font-weight: 400;
+  }
+  .references {
+    left: 5vw;
+    opacity: 0;
+    position: absolute;
+    top: 5vw;
+    transition: opacity TRANSITION_DURATION_SHORT linear;
+    width: 100%;
+    h3:last-of-type {
+      margin-top: 2vw;
+    }
+  }
+  footer {
+    bottom: 0;
+    color: white;
+    left: 0;
+    position: absolute;
+    text-align: right;
+    width: 100%;
+    p {
+      font-size: 1.2vw;
+      margin: 1vw;
+      opacity: 0.5;
+    }
+  }
+  &.show {
+    opacity: 1;
+    .bg {
+      -webkit-filter: brightness(1);
+      filter: brightness(1);
+    }
+  }
+  &.step-1 {
+    h1,
+    .references {
+      opacity: 1;
+    }
+  }
+  &.hide {
+    opacity: 0;
+  }
+}

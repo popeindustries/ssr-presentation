@@ -1,0 +1,476 @@
+/**
+ * A selection of normalizations from normalize.css
+ */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+a {
+  background: transparent;
+}
+b,
+strong {
+  font-weight: bold;
+}
+img {
+  border: 0;
+}
+svg {
+  overflow: visible;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url("src/fonts/AvenirNext-Medium.woff2") format('woff2'), url("src/fonts/AvenirNext-Medium.woff") format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url("src/fonts/AvenirNext-Heavy.woff2") format('woff2'), url("src/fonts/AvenirNext-Heavy.woff") format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url("src/fonts/AvenirNext-Regular.woff2") format('woff2'), url("src/fonts/AvenirNext-Regular.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url("src/fonts/AvenirNext-Bold.woff2") format('woff2'), url("src/fonts/AvenirNext-Bold.woff") format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hack';
+  src: url("src/fonts/Hack-Regular.woff2") format('woff2'), url("src/fonts/Hack-Regular.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body {
+  width: 100vw;
+  height: 200vh;
+}
+html {
+  background-color: #050a07;
+}
+body {
+  color: #fff;
+  font-family: "Avenir Next", sans-serif;
+  font-size: 16px;
+  font-variant: normal;
+  font-weight: 500;
+  padding-bottom: 2em;
+  overflow: hidden;
+  z-index: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 4vw;
+  font-weight: 600;
+}
+h2 {
+  font-size: 3vw;
+  font-weight: 600;
+}
+h3 {
+  font-size: 2.2vw;
+  font-weight: 500;
+}
+ul {
+  margin: 0;
+  padding: 0 0 0 0.5vw;
+}
+li {
+  font-size: 1.8vw;
+  list-style-type: none;
+  padding: 0.5vw 0;
+}
+li::before {
+  display: inline-block;
+  font-size: 2vw;
+  width: 2vw;
+}
+li.good::before {
+  content: '+';
+  color: #41d041;
+}
+li.maybe::before {
+  content: '±';
+  color: #e8d733;
+}
+li.bad::before {
+  content: '—';
+  color: #d21111;
+}
+p {
+  font-size: 1.8vw;
+}
+a {
+  color: #fff;
+  font-size: 1.8vw;
+  text-decoration: none;
+}
+section {
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  visibility: hidden;
+  width: 100%;
+}
+.presentation-notes section > .notes {
+  display: block;
+}
+.presentation-notes section > *:not(.notes) {
+  display: none;
+}
+section.show {
+  visibility: visible;
+}
+section.hide {
+  visibility: hidden;
+}
+pre {
+  margin: 0 0 0 -8vw;
+  width: auto;
+}
+pre code {
+  font-family: 'Hack', monospace;
+  font-size: 2.2vw;
+  padding: 0 !important;
+  background-color: transparent !important;
+  width: auto;
+}
+blockquote {
+  font-size: 2vw;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 2vw 0 3vw;
+  position: relative;
+}
+blockquote:before {
+  content: '‟';
+  display: inline-block;
+  font-size: 300%;
+  left: 0;
+  position: absolute;
+  top: -1.5vw;
+}
+.slides {
+  background-color: #050a07;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  transform-origin: top left;
+  top: 0;
+  width: 100%;
+}
+.clock {
+  font-size: 4vw;
+  opacity: 0.25;
+  position: absolute;
+  right: 1vw;
+  top: 0.5vw;
+  z-index: 100;
+}
+.notes {
+  background-color: #fff;
+  color: #fff;
+  display: none;
+  font-size: 4vw;
+  font-weight: 400;
+  text-align: left;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dev .notes {
+  background-color: rgba(255,255,255,0.2);
+  display: block;
+  top: initial;
+}
+.notes .note {
+  font-size: inherit;
+  left: 50%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  width: 80%;
+}
+.dev .notes .note {
+  background-color: rgba(255,255,255,0.8);
+  bottom: 0;
+  font-size: 1.8vw;
+  left: 0;
+  top: initial;
+  transform: none;
+  padding: 1em;
+  width: auto;
+}
+.function {
+  color: #a6e22e;
+}
+#title {
+  color: #db1a7e;
+  text-align: center;
+  transition-duration: 500ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#title h1 {
+  line-height: 1;
+  margin-top: -4vh;
+}
+#title h2 {
+  color: #fff;
+}
+#title h2 span {
+  color: #db1a7e;
+}
+#crap {
+  color: #524944;
+  opacity: 0;
+  transition-duration: 800ms;
+}
+#crap .bg {
+  background-image: url("src/images/bg-9.jpg");
+  background-position: bottom center;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-filter: brightness(4);
+  filter: brightness(4);
+  transition: all 800ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  z-index: -1;
+}
+#crap .points {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 400ms linear;
+}
+#crap .points .point {
+  font-size: 4vw;
+  margin: 0 0 0 40%;
+  opacity: 0;
+  transition: all 200ms linear;
+}
+#crap.show {
+  opacity: 1;
+}
+#crap.show .bg {
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
+}
+#crap.step-1 .point-1 {
+  opacity: 1;
+}
+#crap.step-2 .point-2 {
+  opacity: 1;
+}
+#crap.step-3 .point-3 {
+  opacity: 1;
+}
+#crap.step-4 .point-4 {
+  opacity: 1;
+}
+#crap.step-5 .point {
+  color: #796c65;
+}
+#crap.step-5 .point::first-letter {
+  color: #db1a7e;
+  font-weight: 900;
+  padding-right: 0.8vw;
+}
+#crap.step-5 .point-2 {
+  transition-delay: 25ms;
+}
+#crap.step-5 .point-3 {
+  transition-delay: 100ms;
+}
+#crap.step-5 .point-4 {
+  transition-delay: 150ms;
+}
+#crap.step-6 .point {
+  opacity: 0;
+}
+#crap.hide {
+  opacity: 0;
+}
+#crap.hide .bg {
+  -webkit-filter: brightness(0);
+  filter: brightness(0);
+}
+#crap.hide .points {
+  opacity: 0;
+}
+#bye {
+  color: #fff;
+  opacity: 0;
+  transition-duration: 800ms;
+}
+#bye .bg {
+  background-image: url("src/images/bg-16.jpg");
+  background-position: bottom center;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-filter: brightness(4);
+  filter: brightness(4);
+  transition: all 800ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  z-index: -1;
+}
+#bye h1 {
+  color: #ea735b;
+  bottom: 4vw;
+  opacity: 0;
+  position: absolute;
+  right: 40vw;
+  text-align: center;
+  transition: opacity 200ms linear;
+}
+#bye a {
+  color: inherit;
+  display: block;
+  font-weight: 400;
+}
+#bye .references {
+  left: 5vw;
+  opacity: 0;
+  position: absolute;
+  top: 5vw;
+  transition: opacity 200ms linear;
+  width: 100%;
+}
+#bye .references h3:last-of-type {
+  margin-top: 2vw;
+}
+#bye footer {
+  bottom: 0;
+  color: #fff;
+  left: 0;
+  position: absolute;
+  text-align: right;
+  width: 100%;
+}
+#bye footer p {
+  font-size: 1.2vw;
+  margin: 1vw;
+  opacity: 0.5;
+}
+#bye.show {
+  opacity: 1;
+}
+#bye.show .bg {
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
+}
+#bye.step-1 h1,
+#bye.step-1 .references {
+  opacity: 1;
+}
+#bye.hide {
+  opacity: 0;
+}
