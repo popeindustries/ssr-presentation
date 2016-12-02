@@ -1706,6 +1706,16 @@ postcss@5.2.6, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.1
     source-map "^0.5.6"
     supports-color "^3.1.2"
 
+preact-render-to-string@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-3.3.0.tgz#e7cf3815fe590d8ddc21e57c996f5c5657ca57d5"
+  dependencies:
+    pretty-format "^3.5.1"
+
+preact@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-6.4.0.tgz#1b8c99754b002639a1c33e68175eefa98a01cc14"
+
 prepend-http@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
@@ -1717,6 +1727,10 @@ preserve@^0.2.0:
 pretty-bytes@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-4.0.2.tgz#b2bf82e7350d65c6c33aa95aaa5a4f6327f61cd9"
+
+pretty-format@^3.5.1:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
 
 private@^0.1.6:
   version "0.1.6"
