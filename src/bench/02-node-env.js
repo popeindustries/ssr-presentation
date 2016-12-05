@@ -2,16 +2,15 @@
 
 process.env.NODE_ENV = 'production';
 
+const { createClass, createElement: el } = require('react');
+const { renderToString } = require('react-dom/server');
 const bench = require('./bench');
-const React = require('react');
-const ReactDOM = require('react-dom/server');
 const word = require('./word');
-const el = React.createElement;
 
 const BREADTH = 11;
 const DEPTH = 4;
 
-const component = React.createClass({
+const component = createClass({
   render () {
     const { depth, breadth } = this.props;
     let children = [];
@@ -27,7 +26,7 @@ const component = React.createClass({
 });
 
 function render () {
-  return ReactDOM.renderToString(el(component, { depth: DEPTH, breadth: BREADTH }));
+  return renderToString(el(component, { depth: DEPTH, breadth: BREADTH }));
 }
 
 bench('NODE_ENV=production', render);

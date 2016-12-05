@@ -18,9 +18,15 @@
     </section>
 
     <section id="me">
-      <div class="notes">
-        <p>hipster developer bingo</p>
-      </div>
+      <h2>Who am I?</h2>
+      <figure class="">
+        <img src="src/images/popeindustries.png">
+        <figcaption>@popeindustries</figcaption>
+      </figure>
+      <figure class="">
+        <img src="src/images/logo-yr.png">
+        <figcaption>Yr</figcaption>
+      </figure>
       <div class="notes">
       </div>
     </section>
@@ -61,7 +67,10 @@
       <h2>Why <em>not</em> server render with React?</h2>
       <h3>Because it's slow</h3>
       <h3>Because it blocks on the cpu</h3>
-      <img src="src/images/render-list.png">
+      <figure class="">
+        <img src="src/images/render.png">
+        <figcaption>React render timings</figcaption>
+      </figure>
       <div class="notes">
       </div>
     </section>
@@ -69,10 +78,219 @@
     <section id="disclaimer">
       <h2><span>DISCLAIMER:</span> I stole this next part</h2>
       <a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks - Sasha Aickin</a>
+      <div class="notes">
+      </div>
     </section>
 
-    <section id="bench1">
+    <section id="bench01">
+      <h2><span>Benchmark:</span> baseline</h2>
+      <p>Out of the box usage of React/ReactDOM</p>
+      <pre class="code">
+        <code class="js">
+          const { createClass, createElement: el } = require('react');
+          const { renderToString } = require('react-dom/server');
+          const word = require('./word');
+          const el = React.createElement;
+          const BREADTH = 11;
+          const DEPTH = 4;
 
+          const component = <span class="function">createClass</span>({
+            <span class="function">render</span> () {
+              const { depth, breadth } = this.props;
+              let children = [];
+
+              if (depth <= 0) return el('div', null, <span class="function">word</span>(Math.random() * 100));
+              for (let i = 0; i < breadth; i++) {
+                children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
+              }
+              return <span class="function">el</span>('div', { children });
+            }
+          });
+
+          function render () {
+            return <span class="function">renderToString</span>(<span class="function">el</span>(component, { depth: DEPTH, breadth: BREADTH }));
+          }
+        </code>
+      </pre>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="bench02">
+      <h2><span>Benchmark:</span> NODE_ENV=production</h2>
+      <p>Running application in "production" mode</p>
+      <pre class="code">
+        <code class="js">
+          process.env.NODE_ENV = 'production';
+
+          const { createClass, createElement: el } = require('react');
+          const { renderToString } = require('react-dom/server');
+          const word = require('./word');
+          const el = React.createElement;
+          const BREADTH = 11;
+          const DEPTH = 4;
+
+          const component = <span class="function">createClass</span>({
+            <span class="function">render</span> () {
+              const { depth, breadth } = this.props;
+              let children = [];
+
+              if (depth <= 0) return el('div', null, <span class="function">word</span>(Math.random() * 100));
+              for (let i = 0; i < breadth; i++) {
+                children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
+              }
+              return <span class="function">el</span>('div', { children });
+            }
+          });
+
+          function render () {
+            return <span class="function">renderToString</span>(<span class="function">el</span>(component, { depth: DEPTH, breadth: BREADTH }));
+          }
+        </code>
+      </pre>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="bench03">
+      <h2><span>Benchmark:</span> stateless components</h2>
+      <p>Author components as stateless functions</p>
+      <pre class="code">
+        <code class="js">
+          process.env.NODE_ENV = 'production';
+
+          const { createElement: el } = require('react');
+          const { renderToString } = require('react-dom/server');
+          const word = require('./word');
+          const BREADTH = 11;
+          const DEPTH = 4;
+
+          const component = function render (props, state) {
+            const { depth, breadth } = props;
+            let children = [];
+
+            if (depth <= 0) return <span class="function">el</span>('div', null, <span class="function">word</span>(Math.random() * 100));
+
+            for (let i = 0; i < breadth; i++) {
+              children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
+            }
+
+            return <span class="function">el</span>('div', { children });
+          };
+
+          function render () {
+            return <span class="function">renderToString</span>(<span class="function">el</span>(component, { depth: DEPTH, breadth: BREADTH }));
+          }
+        </code>
+      </pre>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="bench04">
+      <h2><span>Benchmark:</span> bundled and minified</h2>
+      <p>Bundle and minify React/ReactDOM</p>
+      <pre class="code">
+        <code class="js">
+          process.env.NODE_ENV = 'production';
+
+          const { React: { createElement: el },
+            ReactDOMServer: { renderToString } } = require('./react.min');
+          const word = require('./word');
+          const BREADTH = 11;
+          const DEPTH = 4;
+
+          const component = function render (props, state) {
+            const { depth, breadth } = props;
+            let children = [];
+
+            if (depth <= 0) return <span class="function">el</span>('div', null, <span class="function">word</span>(Math.random() * 100));
+
+            for (let i = 0; i < breadth; i++) {
+              children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
+            }
+
+            return <span class="function">el</span>('div', { children });
+          };
+
+          function render () {
+            return <span class="function">renderToString</span>(<span class="function">el</span>(component, { depth: DEPTH, breadth: BREADTH }));
+          }
+        </code>
+      </pre>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="bench05">
+      <h2><span>Benchmark:</span> Preact</h2>
+      <p>Replace React with Preact</p>
+      <pre class="code">
+        <code class="js">
+          process.env.NODE_ENV = 'production';
+
+          const { h: el } = require('preact');
+          const { render: renderToString } = require('preact-render-to-string');
+          const word = require('./word');
+          const BREADTH = 11;
+          const DEPTH = 4;
+
+          const component = function render (props, state) {
+            const { depth, breadth } = props;
+            let children = [];
+
+            if (depth <= 0) return <span class="function">el</span>('div', null, word(Math.random() * 100));
+
+            for (let i = 0; i < breadth; i++) {
+              children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
+            }
+
+            return <span class="function">el</span>('div', { children });
+          };
+
+          function render () {
+            return <span class="function">renderToString</span>(<span class="function">el</span>(component, { depth: DEPTH, breadth: BREADTH }));
+          }
+        </code>
+      </pre>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="realworld">
+      <h2>What about the <em>real</em> world?</h2>
+      <figure class="">
+        <img src="src/images/render.png">
+        <figcaption>React render timings</figcaption>
+      </figure>
+      <figure class="">
+        <img src="src/images/render-bundle.png">
+        <figcaption>React render timings (bundled/minified React)</figcaption>
+      </figure>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="more">
+      <h2>More things to try?</h2>
+      <div class="tricks">
+        <h3>Avoid calls to <code>React.createElement</code>: <a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a></h3>
+        <h3>Inline calls to <code>React.createElement</code>: <a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a></h3>
+        <h3>Cache component markup: <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></h3>
+        <h3>Asynchronous render: <a href="https://github.com/redfin/react-server">redfin/react-server</a></h3>
+      </div>
+      <div class="notes">
+      </div>
+    </section>
+
+    <section id="future">
+      <h2>Is it hopeless?</h2>
+      <h3>Facebook is rewriting React to be more asynchronous, and it may one day have a streaming server renderer</h3>
+      <p><a href="http://isfiberreadyyet.com">IsFiberReadyYet.com</a></p>
+      <h3>But Facebook doesn't prioritize server side React, and probably won't ever be interested in doing so</h3>
+      <p><a href="http://isserversidereactgoodyet.com">IsServerSideReactGoodYet.com</a></p>
+      <div class="notes">
+      </div>
     </section>
 
     <section id="bye">
@@ -83,13 +301,17 @@
       </h1>
       <div class="references">
         <h3>Slides</h3>
-        <a href="http://popeindustries.github.io/nodeconf-oslo-2016">http://popeindustries.github.io/nodeconf-oslo-2016</a>
+        <a href="http://popeindustries.github.io/meetup-oslo-2016">popeindustries.github.io/meetup-oslo-2016</a>
+        <h3>Benchmark code</h3>
+        <a href="https://github.com/popeindustries/meetup-oslo-2016">github.com/popeindustries/meetup-oslo-2016</a>
         <h3>Links</h3>
-        <a href="https://github.com/YR/express-client">https://github.com/YR/express-client</a>
-        <a href="https://github.com/YR/component">https://github.com/YR/component</a>
-        <a href="https://www.nczonline.net/blog/2016/01/react-and-the-economics-of-dynamic-web-interfaces">https://www.nczonline.net/blog/2016/01/react-and-the-economics-of-dynamic-web-interfaces</a>
-        <a href="https://github.com/facebook/react/issues/6420">https://github.com/facebook/react/issues/6420</a>
-        <a href="https://github.com/facebook/react/pull/6618">https://github.com/facebook/react/pull/6618</a>
+        <a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks - Sasha Aickin</a>
+        <a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a>
+        <a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a>
+        <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a>
+        <a href="https://github.com/redfin/react-server">redfin/react-server</a>
+        <a href="https://github.com/YR/component">YR/component</a>
+        <a href="http://isfiberreadyyet.com">isfiberreadyyet.com</a>
       </div>
       <footer>
         <p>PHOTOS: Alexander Pope</p>

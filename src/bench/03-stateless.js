@@ -2,10 +2,10 @@
 
 process.env.NODE_ENV = 'production';
 
-const { React, ReactDOMServer } = require('./react.min');
+const { createElement: el } = require('react');
+const { renderToString } = require('react-dom/server');
 const bench = require('./bench');
 const word = require('./word');
-const el = React.createElement;
 
 const BREADTH = 11;
 const DEPTH = 4;
@@ -24,7 +24,7 @@ const component = function render (props, state) {
 };
 
 function render () {
-  return ReactDOMServer.renderToString(el(component, { depth: DEPTH, breadth: BREADTH }));
+  return renderToString(el(component, { depth: DEPTH, breadth: BREADTH }));
 }
 
-bench('stateless component', render);
+bench('stateless components', render);

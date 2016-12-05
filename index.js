@@ -26,7 +26,6 @@ if ('browser' != 'browser') {
   };
 }
 
-
 (function () {
 /*== src/index.js ==*/
 $m['src/index'] = { exports: {} };
