@@ -19,66 +19,97 @@
 
     <section id="me">
       <h2>Who am I?</h2>
-      <figure class="">
-        <img src="src/images/popeindustries.png">
-        <figcaption>@popeindustries</figcaption>
-      </figure>
-      <figure class="">
-        <img src="src/images/logo-yr.png">
-        <figcaption>Yr</figcaption>
-      </figure>
+      <div class="images">
+        <figure class="popeindustries">
+          <img src="src/images/popeindustries.png">
+          <figcaption>Alexander Pope</figcaption>
+          <figcaption><a href="https://github.com/popeindustries">@popeindustries</a></figcaption>
+        </figure>
+        <figure class="yr">
+          <img src="src/images/logo-yr.png">
+          <figcaption>Yr</figcaption>
+          <figcaption><a href="https://www.yr.no">www.yr.no</a></figcaption>
+        </figure>
+      </div>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
-    <section id="middleEnd">
-      <h2>Should I write my back-end API in React?<span>no</span></h2>
-      <h2>Should I write my front-end in React?<span>probably</span></h2>
-      <h2>Should I write my middle-end in React?<span>maybe</span></h2>
+    <section id="questions">
+      <h2 class="backend">Should I write my back-end API in React?<span class="answer">no</span></h2>
+      <h2 class="frontend">Should I write my front-end in React?<span class="answer">probably</span></h2>
+      <h2 class="middleend">Should I write my middle-end in React?<span class="answer">maybe</span></h2>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
     <section id="ssr">
       <h2>Why bother with server rendering?</h2>
-      <h3>Because it's <em>CRAP</em></h3>
       <div class="points">
-        <h3 class="point point-1">Cacheable</h3>
-        <h3 class="point point-2">Resilient</h3>
-        <h3 class="point point-3">Accessible</h3>
-        <h3 class="point point-4">Progressive</h3>
+        <h3>Because it's <em>CRAP!</em></h3>
+        <p class="point point-1"><span>C</span>acheable</p>
+        <p class="point point-2"><span>R</span>esilient</p>
+        <p class="point point-3"><span>A</span>ccessible</p>
+        <p class="point point-4"><span>P</span>rogressive</p>
       </div>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
     <section id="react">
       <h2>Why server render with React?</h2>
-      <h3>Because you can</h3>
-      <h3>Because it's easy</h3>
-      <h3>Because <code>render(data) => ui</code></h3>
-      <blockquote>Frameworks are primarily a tool for structuring your thoughts, not your code – Rich Harris</blockquote>
+      <h3 class="point point-1">Because you <span>can</span></h3>
+      <h3 class="point point-2">Because it's <span>easy</span></h3>
+      <h3 class="point point-3">Because <code>render(data) => ui</code></h3>
       <div class="notes">
-        <p>I bought into React when it was still being sold as the V in MVC</p>
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
-    <section id="notReact">
+    <section id="notreact">
       <h2>Why <em>not</em> server render with React?</h2>
-      <h3>Because it's slow</h3>
-      <h3>Because it blocks on the cpu</h3>
+      <h3 class="point point-1">Because it's <span>slow</span></h3>
+      <h3 class="point point-2">Because it <span>blocks</span> on the cpu</h3>
+      <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+      </div>
+    </section>
+
+    <section id="timings">
       <figure class="">
         <img src="src/images/render.png">
-        <figcaption>React render timings</figcaption>
+        <figcaption>React render timings (yr.no)</figcaption>
       </figure>
-      <div class="notes">
-      </div>
     </section>
 
     <section id="disclaimer">
       <h2><span>DISCLAIMER:</span> I stole this next part</h2>
-      <a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks - Sasha Aickin</a>
+      <p>Sasha Aickin presented <a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks</a> at a Node meetup in Feb. 2016. The following benchmarks are dedicated to him.</p>
       <div class="notes">
+      <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+      </div>
       </div>
     </section>
 
