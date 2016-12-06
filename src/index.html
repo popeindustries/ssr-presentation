@@ -98,7 +98,7 @@
     <section id="timings">
       <figure class="">
         <img src="src/images/render.png">
-        <figcaption>React render timings (yr.no)</figcaption>
+        <figcaption>React render timings - yr.no</figcaption>
       </figure>
     </section>
 
@@ -106,14 +106,12 @@
       <h2><span>DISCLAIMER:</span> I stole this next part</h2>
       <p>Sasha Aickin presented <a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks</a> at a Node meetup in Feb. 2016. The following benchmarks are dedicated to him.</p>
       <div class="notes">
-      <div class="notes">
         <p class="note"></p>
         <p class="note step"></p>
       </div>
-      </div>
     </section>
 
-    <section id="bench01">
+    <section id="bench01" class="benchmark">
       <h2><span>Benchmark:</span> baseline</h2>
       <p>Out of the box usage of React/ReactDOM</p>
       <pre class="code">
@@ -130,7 +128,7 @@
               const { depth, breadth } = this.props;
               let children = [];
 
-              if (depth <= 0) return el('div', null, <span class="function">word</span>(Math.random() * 100));
+              if (depth <= 0) return <span class="function">el</span>('div', null, <span class="function">word</span>(Math.random() * 100));
               for (let i = 0; i < breadth; i++) {
                 children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
               }
@@ -144,10 +142,12 @@
         </code>
       </pre>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
-    <section id="bench02">
+    <section id="bench02" class="benchmark">
       <h2><span>Benchmark:</span> NODE_ENV=production</h2>
       <p>Running application in "production" mode</p>
       <pre class="code">
@@ -166,7 +166,7 @@
               const { depth, breadth } = this.props;
               let children = [];
 
-              if (depth <= 0) return el('div', null, <span class="function">word</span>(Math.random() * 100));
+              if (depth <= 0) return <span class="function">el</span>('div', null, <span class="function">word</span>(Math.random() * 100));
               for (let i = 0; i < breadth; i++) {
                 children.push(<span class="function">el</span>(component, { key: i, depth: depth - 1, breadth }));
               }
@@ -180,10 +180,12 @@
         </code>
       </pre>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
-    <section id="bench03">
+    <section id="bench03" class="benchmark">
       <h2><span>Benchmark:</span> stateless components</h2>
       <p>Author components as stateless functions</p>
       <pre class="code">
@@ -215,10 +217,12 @@
         </code>
       </pre>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
-    <section id="bench04">
+    <section id="bench04" class="benchmark">
       <h2><span>Benchmark:</span> bundled and minified</h2>
       <p>Bundle and minify React/ReactDOM</p>
       <pre class="code">
@@ -250,10 +254,12 @@
         </code>
       </pre>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
-    <section id="bench05">
+    <section id="bench05" class="benchmark">
       <h2><span>Benchmark:</span> Preact</h2>
       <p>Replace React with Preact</p>
       <pre class="code">
@@ -285,69 +291,114 @@
         </code>
       </pre>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
     <section id="realworld">
-      <h2>What about the <em>real</em> world?</h2>
-      <figure class="">
-        <img src="src/images/render.png">
-        <figcaption>React render timings</figcaption>
-      </figure>
-      <figure class="">
-        <img src="src/images/render-bundle.png">
-        <figcaption>React render timings (bundled/minified React)</figcaption>
-      </figure>
+      <div class="stack">
+        <figure class="timings1">
+          <img src="src/images/render.png">
+          <figcaption>React render timings - yr.no - <span>production + stateless + facebook/react.min.js</span></figcaption>
+        </figure>
+        <figure class="timings2">
+          <img src="src/images/render-bundle.png">
+          <figcaption>React render timings - yr.no - <span>production + stateless + popeindustries/react.min.js</span></figcaption>
+        </figure>
+      </div>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
     <section id="more">
-      <h2>More things to try?</h2>
-      <div class="tricks">
-        <h3>Avoid calls to <code>React.createElement</code>: <a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a></h3>
-        <h3>Inline calls to <code>React.createElement</code>: <a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a></h3>
-        <h3>Cache component markup: <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></h3>
-        <h3>Asynchronous render: <a href="https://github.com/redfin/react-server">redfin/react-server</a></h3>
-      </div>
+      <h2>I need <em>more</em> speed!</h2>
+      <h3 class="point point-1">Avoid/inline <code>React.createElement</code>: <a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a> + <a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a></h3>
+      <h3 class="point point-2">Cache component markup: <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></h3>
+      <h3 class="point point-3">Asynchronous rendering framework: <a href="https://github.com/redfin/react-server">redfin/react-server</a></h3>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
     <section id="future">
-      <h2>Is it hopeless?</h2>
-      <h3>Facebook is rewriting React to be more asynchronous, and it may one day have a streaming server renderer</h3>
-      <p><a href="http://isfiberreadyyet.com">IsFiberReadyYet.com</a></p>
-      <h3>But Facebook doesn't prioritize server side React, and probably won't ever be interested in doing so</h3>
-      <p><a href="http://isserversidereactgoodyet.com">IsServerSideReactGoodYet.com</a></p>
+      <h2>This <em>isn't</em> so easy after all. Is there no hope?</h2>
+      <div class="point point-1">
+        <h3>Facebook is rewriting React to be more asynchronous, and it may one day have a streaming server renderer.</h3>
+        <p><a href="http://isfiberreadyyet.com" target="blank" rel="noopener noreferrer">IsFiberReadyYet.com</a></p>
+      </div>
+      <div class="point point-2">
+        <h3>But Facebook doesn't prioritize server side React, and probably won't ever be interested in doing so.</h3>
+        <p><a href="http://isserversidereactgoodenoughyet.com" target="blank" rel="noopener noreferrer">IsServerSideReactGoodEnoughYet.com</a></p>
+      </div>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+      </div>
+    </section>
+
+    <section id="advice">
+      <h2>Advice from a grey beard</h2>
+      <ul>
+        <li class="good point-1">run in production mode (<code>NODE_ENV=production</code>)</li>
+        <li class="good point-2">prefer stateless components</li>
+        <li class="good point-3">bundle and minimize React/ReactDOM</li>
+        <li class="good point-4">use Babel React transforms</li>
+        <li class="maybe point-5">cache component markup (<code>walmartlabs/react-ssr-optimization</code>)</li>
+        <li class="maybe point-6">switch to Preact</li>
+        <li class="bad point-7">React as a framework (in the good old days it was just the "V in MVC")
+          <ul>
+            <li class="bad point-8">routing</li>
+            <li class="bad point-9">data fetching</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
+        <p class="note step"></p>
       </div>
     </section>
 
     <section id="bye">
-      <div class="bg"></div>
-      <h1>
-        Thanks!
-        <a href="https://twitter.com/popeindustries">@popeindustries</a>
-      </h1>
-      <div class="references">
-        <h3>Slides</h3>
-        <a href="http://popeindustries.github.io/meetup-oslo-2016">popeindustries.github.io/meetup-oslo-2016</a>
-        <h3>Benchmark code</h3>
-        <a href="https://github.com/popeindustries/meetup-oslo-2016">github.com/popeindustries/meetup-oslo-2016</a>
-        <h3>Links</h3>
-        <a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks - Sasha Aickin</a>
-        <a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a>
-        <a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a>
-        <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a>
-        <a href="https://github.com/redfin/react-server">redfin/react-server</a>
-        <a href="https://github.com/YR/component">YR/component</a>
-        <a href="http://isfiberreadyyet.com">isfiberreadyyet.com</a>
-      </div>
+      <h2>Thanks!</h2>
+      <h3>Slides</h3>
+      <ul>
+        <li><a href="http://popeindustries.github.io/meetup-oslo-2016">popeindustries.github.io/meetup-oslo-2016</a></li>
+      </ul>
+      <h3>Benchmark code</h3>
+      <ul>
+        <li><a href="https://github.com/popeindustries/meetup-oslo-2016">github.com/popeindustries/meetup-oslo-2016</a></li>
+      </ul>
+      <h3>Links</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?feature=player_embedded&v=PnpfGy7q96U">Speed Up Your React Server With These 6 Weird Tricks - Sasha Aickin</a></li>
+        <li><a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a></li>
+        <li><a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a></li>
+        <li><a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></li>
+        <li><a href="https://github.com/redfin/react-server">redfin/react-server</a></li>
+        <li><a href="https://github.com/YR/component">YR/component</a></li>
+        <li><a href="http://isfiberreadyyet.com">IsFiberReadyYet.com</a></li>
+      </ul>
       <footer>
-        <p>PHOTOS: Alexander Pope</p>
+        <a href="https://twitter.com/popeindustries">@popeindustries</a>
       </footer>
       <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
       </div>
     </section>
   </div>

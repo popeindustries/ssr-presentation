@@ -124,7 +124,7 @@ function srcindex__changeNote(currentSlideIndex, nextSlideIndex, noteIndex) {
  */
 function srcindex__changeStep(slideIndex, stepIndex) {
   const slide = srcindex__model.slides[slideIndex];
-  let classStr = slide.getAttribute('class').replace(/\s?step-\d*\s?/g, '');
+  let classStr = slide.getAttribute('class').replace(/step-\d*/g, '').replace(/\s+/, ' ');
 
   for (let i = 1; i <= stepIndex; i++) {
     classStr += ` step-${ i }`;

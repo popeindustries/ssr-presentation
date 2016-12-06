@@ -94,7 +94,7 @@ function changeNote (currentSlideIndex, nextSlideIndex, noteIndex) {
  */
 function changeStep (slideIndex, stepIndex) {
   const slide = model.slides[slideIndex];
-  let classStr = slide.getAttribute('class').replace(/\s?step-\d*\s?/g, '');
+  let classStr = slide.getAttribute('class').replace(/step-\d*/g, '').replace(/\s+/, ' ');
 
   for (let i = 1; i <= stepIndex; i++) {
     classStr += ` step-${i}`;

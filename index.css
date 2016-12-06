@@ -159,7 +159,7 @@ ul {
   padding: 0 0 0 0.5vw;
 }
 li {
-  font-size: 1.8vw;
+  font-size: 2vw;
   list-style-type: none;
   padding: 0.5vw 0;
 }
@@ -169,25 +169,31 @@ li::before {
   width: 2vw;
 }
 li.good::before {
-  content: '+';
+  content: '✓';
   color: #41d041;
 }
 li.maybe::before {
-  content: '±';
+  content: '?';
   color: #e8d733;
 }
 li.bad::before {
-  content: '—';
+  content: '✘';
   color: #d21111;
+}
+li ul {
+  margin-left: 1em;
 }
 p {
   font-size: 1.8vw;
 }
 a {
-  color: #db1a7e;
+  color: #e8d733;
   font-size: 1.8vw;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
+}
+em {
+  color: #db1a7e;
 }
 section {
   bottom: 0;
@@ -212,12 +218,16 @@ section.hide {
   visibility: hidden;
 }
 pre {
-  margin: 0 0 0 -8vw;
+  margin: 0 0 0 -8vh;
+  padding: 0;
   width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 pre code {
   font-family: 'Hack', monospace;
-  font-size: 2vw;
+  font-size: 1em;
   padding: 0 !important;
   background-color: transparent !important;
   width: auto;
@@ -327,11 +337,7 @@ figcaption {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-#me h2 {
-  position: absolute;
-  top: 10vh;
-  left: 10vw;
+  padding: 10vh 10vw;
 }
 #me .images {
   display: flex;
@@ -344,7 +350,7 @@ figcaption {
   transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 #me figure.popeindustries {
-  transform: translate(50%, 0);
+  transform: translate(55%, 0);
 }
 #me figure.yr {
   transform: translate(-50%, 0);
@@ -386,6 +392,9 @@ figcaption {
   top: -0.15em;
   transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+#questions.show {
+  opacity: 1;
+}
 #questions.step-1 .backend {
   opacity: 1;
 }
@@ -412,10 +421,13 @@ figcaption {
   opacity: 0;
 }
 #ssr {
-  margin: 10vh 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 10vw;
 }
 #ssr h2 {
-  margin-bottom: 8vh;
+  margin-bottom: 2vh;
 }
 #ssr .points em,
 #ssr .points span {
@@ -453,10 +465,13 @@ figcaption {
   opacity: 0;
 }
 #react {
-  margin: 10vh 10vw;
+  padding: 10vh 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #react h2 {
-  margin-bottom: 8vh;
+  margin-bottom: 2vh;
 }
 #react .point {
   margin-bottom: 0.25em;
@@ -484,10 +499,13 @@ figcaption {
   opacity: 0;
 }
 #notreact {
-  margin: 10vh 10vw;
+  padding: 10vh 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #notreact h2 {
-  margin-bottom: 8vh;
+  margin-bottom: 2vh;
 }
 #notreact .point {
   margin-bottom: 0.25em;
@@ -527,12 +545,12 @@ figcaption {
 }
 #disclaimer {
   padding: 10vh 10vw;
-}
-#disclaimer h2 {
-  margin-bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #disclaimer h2 span {
-  color: #db1a7e;
+  color: #d21111;
 }
 #disclaimer p {
   opacity: 0;
@@ -543,77 +561,199 @@ figcaption {
 }
 #disclaimer.step-1 p {
   opacity: 1;
-  width: auto;
 }
 #disclaimer.hide {
   opacity: 0;
 }
-#bye {
-  color: #fff;
-  opacity: 0;
-  transition-duration: 800ms;
+.benchmark h2 {
+  margin: 10vh 10vh 0 10vh;
 }
-#bye .bg {
-  background-image: url("src/images/bg-16.jpg");
-  background-position: bottom center;
-  background-size: cover;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  -webkit-filter: brightness(4);
-  filter: brightness(4);
-  transition: all 800ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  z-index: -1;
+.benchmark h2 span {
+  color: #db1a7e;
 }
-#bye h1 {
-  color: #ea735b;
-  bottom: 4vw;
+.benchmark p {
+  margin: 0 10vh 0;
+}
+.benchmark .code {
   opacity: 0;
-  position: absolute;
-  right: 40vw;
-  text-align: center;
   transition: opacity 200ms linear;
 }
-#bye a {
-  color: inherit;
-  display: block;
-  font-weight: 400;
-}
-#bye .references {
-  left: 5vw;
-  opacity: 0;
-  position: absolute;
-  top: 5vw;
-  transition: opacity 200ms linear;
-  width: 100%;
-}
-#bye .references h3:last-of-type {
-  margin-top: 2vw;
-}
-#bye footer {
-  bottom: 0;
-  color: #fff;
-  left: 0;
-  position: absolute;
-  text-align: right;
-  width: 100%;
-}
-#bye footer p {
-  font-size: 1.2vw;
-  margin: 1vw;
-  opacity: 0.5;
-}
-#bye.show {
+.benchmark.show {
   opacity: 1;
 }
-#bye.show .bg {
-  -webkit-filter: brightness(1);
-  filter: brightness(1);
+.benchmark.step-1 .code {
+  opacity: 1;
 }
-#bye.step-1 h1,
-#bye.step-1 .references {
+.benchmark.hide {
+  opacity: 0;
+}
+#realworld {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+#realworld .stack {
+  position: relative;
+}
+#realworld figure {
+  transition: opacity 200ms linear;
+}
+#realworld figure figcaption span {
+  color: #db1a7e;
+}
+#realworld figure.timings2 {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#realworld img {
+  width: 100%;
+}
+#realworld.show {
+  opacity: 1;
+}
+#realworld.step-1 .timings1 {
+  opacity: 0;
+}
+#realworld.step-1 .timings2 {
+  opacity: 1;
+}
+#realworld.hide {
+  opacity: 0;
+}
+#more {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 10vw;
+}
+#more h2 {
+  margin-bottom: 2vh;
+}
+#more .point {
+  font-size: 2.5vw;
+  margin: 0.25em 0;
+}
+#more .points,
+#more .point {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
+#more.show {
+  opacity: 1;
+}
+#more.step-1 .point-1 {
+  opacity: 1;
+}
+#more.step-2 .point-2 {
+  opacity: 1;
+}
+#more.step-3 .point-3 {
+  opacity: 1;
+}
+#more.hide {
+  opacity: 0;
+}
+#future {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 10vw;
+}
+#future h2 {
+  margin-bottom: 2vh;
+}
+#future .point {
+  font-size: 2.5vw;
+  margin: 0.25em 0;
+}
+#future .points,
+#future .point {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
+#future.show {
+  opacity: 1;
+}
+#future.step-1 .point-1 {
+  opacity: 1;
+}
+#future.step-2 .point-2 {
+  opacity: 1;
+}
+#future.hide {
+  opacity: 0;
+}
+#advice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 10vw;
+}
+#advice h2 {
+  margin-bottom: 2vh;
+}
+#advice li {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
+#advice.show {
+  opacity: 1;
+}
+#advice.step-1 .point-1 {
+  opacity: 1;
+}
+#advice.step-2 .point-2 {
+  opacity: 1;
+}
+#advice.step-3 .point-3 {
+  opacity: 1;
+}
+#advice.step-4 .point-4 {
+  opacity: 1;
+}
+#advice.step-5 .point-5 {
+  opacity: 1;
+}
+#advice.step-6 .point-6 {
+  opacity: 1;
+}
+#advice.step-7 .point-7 {
+  opacity: 1;
+}
+#advice.step-8 .point-8 {
+  opacity: 1;
+}
+#advice.step-9 .point-9 {
+  opacity: 1;
+}
+#advice.hide {
+  opacity: 0;
+}
+#bye {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 10vw;
+}
+#bye h2 {
+  margin-bottom: 2vh;
+}
+#bye h3 {
+  margin-top: 0.5em;
+}
+#bye footer {
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+#bye footer a {
+  color: #fff;
+}
+#bye.show {
   opacity: 1;
 }
 #bye.hide {
