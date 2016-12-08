@@ -218,16 +218,13 @@ section.hide {
   visibility: hidden;
 }
 pre {
-  margin: 0 0 0 -8vh;
-  padding: 0;
+  margin: -0.5em 0 0 -5em;
+  padding: 0 0 0 4vw;
   width: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 pre code {
   font-family: 'Hack', monospace;
-  font-size: 1em;
+  font-size: 0.9em;
   padding: 0 !important;
   background-color: transparent !important;
   width: auto;
@@ -566,13 +563,13 @@ figcaption {
   opacity: 0;
 }
 .benchmark h2 {
-  margin: 10vh 10vh 0 10vh;
+  margin: 10vh 4vw 0;
 }
 .benchmark h2 span {
   color: #db1a7e;
 }
 .benchmark p {
-  margin: 0 10vh 0;
+  margin: 0 4vw 0;
 }
 .benchmark .code {
   opacity: 0;
