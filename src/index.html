@@ -149,7 +149,7 @@
 
     <section id="bench02" class="benchmark">
       <h2><span>Benchmark:</span> NODE_ENV=production</h2>
-      <p>Running application in "production" mode</p>
+      <p>Running your application in "production" mode</p>
       <pre class="code">
         <code class="js">
           process.env.NODE_ENV = 'production';
@@ -259,6 +259,23 @@
       </div>
     </section>
 
+    <section id="realworld">
+      <div class="stack">
+        <figure class="timings1">
+          <img src="src/images/render.png">
+          <figcaption>React render timings - yr.no - <span>production + stateless + facebook/react.min.js</span></figcaption>
+        </figure>
+        <figure class="timings2">
+          <img src="src/images/render-bundle.png">
+          <figcaption>React render timings - yr.no - <span>production + stateless + yr/react.min.js</span></figcaption>
+        </figure>
+      </div>
+      <div class="notes">
+        <p class="note"></p>
+        <p class="note step"></p>
+      </div>
+    </section>
+
     <section id="bench05" class="benchmark">
       <h2><span>Benchmark:</span> Preact</h2>
       <p>Replace React with Preact</p>
@@ -296,27 +313,10 @@
       </div>
     </section>
 
-    <section id="realworld">
-      <div class="stack">
-        <figure class="timings1">
-          <img src="src/images/render.png">
-          <figcaption>React render timings - yr.no - <span>production + stateless + facebook/react.min.js</span></figcaption>
-        </figure>
-        <figure class="timings2">
-          <img src="src/images/render-bundle.png">
-          <figcaption>React render timings - yr.no - <span>production + stateless + popeindustries/react.min.js</span></figcaption>
-        </figure>
-      </div>
-      <div class="notes">
-        <p class="note"></p>
-        <p class="note step"></p>
-      </div>
-    </section>
-
     <section id="more">
       <h2>I need <em>more</em> speed!</h2>
       <h3 class="point point-1">Avoid/inline <code>React.createElement</code>: <a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a> + <a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a></h3>
-      <h3 class="point point-2">Cache component markup: <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></h3>
+      <h3 class="point point-2">Cache/templatize component markup: <a href="https://github.com/electrode-io/electrode-react-ssr-caching">electrode-io/electrode-react-ssr-caching</a> or <a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></h3>
       <h3 class="point point-3">Asynchronous rendering framework: <a href="https://github.com/redfin/react-server">redfin/react-server</a></h3>
       <div class="notes">
         <p class="note"></p>
@@ -329,12 +329,12 @@
     <section id="future">
       <h2>This <em>isn't</em> so easy after all. Is there no hope?</h2>
       <div class="point point-1">
-        <h3>Facebook is rewriting React to be more asynchronous, and it may one day have a streaming server renderer.</h3>
+        <h3>Facebook is rewriting React to be more asynchronous, and it may one day have a streaming server renderer...</h3>
         <p><a href="http://isfiberreadyyet.com" target="blank" rel="noopener noreferrer">IsFiberReadyYet.com</a></p>
       </div>
       <div class="point point-2">
-        <h3>But Facebook doesn't prioritize server side React, and probably won't ever be interested in doing so.</h3>
-        <p><a href="http://isserversidereactgoodenoughyet.com" target="blank" rel="noopener noreferrer">IsServerSideReactGoodEnoughYet.com</a></p>
+        <h3><em>...but</em> Facebook doesn't prioritize server side React, and probably never will.</h3>
+        <p><a href="http://isserversidereactreadyyet.com" target="blank" rel="noopener noreferrer">IsServerSideReactReadyYet.com</a></p>
       </div>
       <div class="notes">
         <p class="note"></p>
@@ -350,7 +350,7 @@
         <li class="good point-2">prefer stateless components</li>
         <li class="good point-3">bundle and minimize React/ReactDOM</li>
         <li class="good point-4">use Babel React transforms</li>
-        <li class="maybe point-5">cache component markup (<code>walmartlabs/react-ssr-optimization</code>)</li>
+        <li class="maybe point-5">cache/templatize component markup (<code>walmartlabs/react-ssr-optimization</code>)</li>
         <li class="maybe point-6">switch to Preact</li>
         <li class="bad point-7">React as a framework (in the good old days it was just the "V in MVC")
           <ul>
@@ -389,6 +389,7 @@
         <li><a href="https://babeljs.io/docs/plugins/transform-react-constant-elements/">babel-transform-react-constant-elements</a></li>
         <li><a href="https://babeljs.io/docs/plugins/transform-react-inline-elements/">babel-plugin-transform-react-inline-elements</a></li>
         <li><a href="https://github.com/walmartlabs/react-ssr-optimization">walmartlabs/react-ssr-optimization</a></li>
+        <li><a href="https://github.com/electrode-io/electrode-react-ssr-caching">electrode-io/electrode-react-ssr-caching</a></li>
         <li><a href="https://github.com/redfin/react-server">redfin/react-server</a></li>
         <li><a href="https://github.com/YR/component">YR/component</a></li>
         <li><a href="http://isfiberreadyyet.com">IsFiberReadyYet.com</a></li>
