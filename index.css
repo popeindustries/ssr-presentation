@@ -599,11 +599,13 @@ figcaption {
 #realworld figure figcaption span {
   color: #db1a7e;
 }
+#realworld figure.timings1 {
+  transform: translate(0, 50%);
+}
 #realworld figure.timings2 {
   opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+  transform: translate(0, -50%);
+  margin-top: -1em;
 }
 #realworld img {
   width: 100%;
